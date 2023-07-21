@@ -24,7 +24,7 @@ public class SecurityConfiguration {
                         .anyRequest().permitAll()  // 그 외 전체 대상
                 ;
                 httpSecurity.formLogin(login -> login.loginPage("/loginForm")
-                                .failureUrl("/loginForm?fail=true")
+                                .failureUrl("/loginForm?fail=true")  
                                 .loginProcessingUrl("/login")
                                 .defaultSuccessUrl("/")); // 자발적으로 로그인 폼에 들어갔을 때 로그인 성공 후 연결되는 화면
                 httpSecurity.logout(logout -> logout
@@ -46,7 +46,7 @@ public class SecurityConfiguration {
 }
 
 // uri에 마킹하는 부분
-// admin으로 로그인 시도할 때 로그인 후 default된 화면으로 이어지면 안됨. admin페이지로 연결되어야 ㅎ는데 
+// admin으로 로그인 시도할 때 로그인 후 default된 화면으로 이어지면 안됨. admin페이지로 연결되어야 하는데 
 // 스프링 자체에서 요청했던 부분을 기억하고 있다가 로그인 성공하면 그 해당 페이지롱 연결시켜줌.
 /// admin* : uri에 admin으로 시작하는 모든 항목은 로그인이 필요하다 (*를 쓰면 모든 것을 포함함)
 // 데이터베이스에는 ROLE_ 를 붙여줘야 하고 스프링에서는 roles를 굳이 붙이지 않아도 됨.(테이블 레코드에 있는 이름과 동일하게 넣어줘야 함)
